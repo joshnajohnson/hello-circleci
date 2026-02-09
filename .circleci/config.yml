@@ -6,19 +6,16 @@ jobs:
       - image: cimg/base:stable   # basic Linux environment
     steps:
       - checkout                  # pulls your repo code
-      - run:
-          name: Create Text File
-          command: echo "This is a file created in CircleCI workspace" > hello.txt
+      
       - run:
           name: List Files
-          command: ls -l
+          command: ls 
       - run:
-          name: Show File Contents
-          command: cat hello.txt
+          name: Show sample file Contents
+          command: cat sample.txt
 
 workflows:
-  version: 2
-  demo-workflow:
+  git-integration-workflow:
     jobs:
-      - workspace-demo
+      - git-integration-job
 
