@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  hello-circleci:
+    docker:
+      - image: cimg/base:stable   # basic Linux image
+    steps:
+      - checkout                 # pulls your repo code
+      - run:
+          name: Print Hello Message
+          command: echo "Hello CircleCI"
+
+workflows:
+  version: 2
+  hello-workflow:
+    jobs:
+      - hello-circleci
