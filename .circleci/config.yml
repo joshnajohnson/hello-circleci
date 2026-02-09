@@ -1,17 +1,24 @@
 version: 2.1
 
 jobs:
-  hello-circleci:
+  workspace-demo:
     docker:
-      - image: cimg/base:stable   # basic Linux image
+      - image: cimg/base:stable   # basic Linux environment
     steps:
-      - checkout                 # pulls your repo code
+      - checkout                  # pulls your repo code
       - run:
-          name: Print Hello Message
-          command: echo "Hello CircleCI"
+          name: Create Text File
+          command: echo "This is a file created in CircleCI workspace" > hello.txt
+      - run:
+          name: List Files
+          command: ls -l
+      - run:
+          name: Show File Contents
+          command: cat hello.txt
 
 workflows:
   version: 2
-  hello-workflow:
+  demo-workflow:
     jobs:
-      - hello-circleci
+      - workspace-demo
+
